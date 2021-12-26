@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Accessible Accordian</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body> 
+        <section>
+        <h2 id="accordian-widget-title-1">Many Open Accordian Widget</h2>
+        <div id="accordian-widget" aria-labelledby="accordian-widget-title-1">       
+            <div class="accordian-group">
+                <button 
+                    id="accordian-button-1" 
+                    class="accordian-button"
+                    aria-controls="accordian-content-1" 
+                    aria-expanded="true">
+                    Question 1?
+                </button>
+                <div 
+                    id="accordian-content-1" 
+                    role="region" 
+                    aria-labelledby="accordian-button-1" 
+                    class="accordian-content">
+                    Question 1 content
+                </div>
+            </div>
+            <div class="accordian-group">
+                <button 
+                    id="accordian-button-2" 
+                    class="accordian-button"
+                    aria-controls="accordian-content-2" 
+                    aria-expanded="false">
+                    Question 2?
+                </button>
+                <div 
+                    id="accordian-content-2" 
+                    role="region" 
+                    aria-labelledby="accordian-button-2" 
+                    class="accordian-content"
+                    hidden
+                    >
+                    Question 2 content
+                </div>
+            </div>
+            <div class="accordian-group">
+                <button 
+                    id="accordian-button-3" 
+                    class="accordian-button"
+                    aria-controls="accordian-content-3" 
+                    aria-expanded="false">
+                    Question 3?
+                </button>
+                <div 
+                    id="accordian-content-3" 
+                    role="region" 
+                    aria-labelledby="accordian-button-3" 
+                    class="accordian-content"
+                    hidden
+                    >
+                    Question 3 content
+                </div>
+            </div>
+        </div>
+        </section>
+        <section>
+        <h2 id="accordian-widget-title-2">One Open Only Accordian Widget</h2>
+        <div id="accordian-widget" aria-labelledby="accordian-widget-title-2">          
+            <div class="accordian-group">
+                <button 
+                    id="accordian-button-1" 
+                    class="accordian-button"
+                    aria-controls="accordian-content-1" 
+                    aria-expanded="true">
+                    Question 1?
+                </button>
+                <div 
+                    id="accordian-content-1" 
+                    role="region" 
+                    aria-labelledby="accordian-button-1" 
+                    class="accordian-content">
+                    Question 1 content
+                </div>
+            </div>
+            <div class="accordian-group">
+                <button 
+                    id="accordian-button-2" 
+                    class="accordian-button"
+                    aria-controls="accordian-content-2" 
+                    aria-expanded="false">
+                    Question 2?
+                </button>
+                <div 
+                    id="accordian-content-2" 
+                    role="region" 
+                    aria-labelledby="accordian-button-2" 
+                    class="accordian-content"
+                    hidden
+                    >
+                    Question 2 content
+                </div>
+            </div>
+            <div class="accordian-group">
+                <button 
+                    id="accordian-button-3" 
+                    class="accordian-button"
+                    aria-controls="accordian-content-3" 
+                    aria-expanded="false">
+                    Question 3?
+                </button>
+                <div 
+                    id="accordian-content-3" 
+                    role="region" 
+                    aria-labelledby="accordian-button-3" 
+                    class="accordian-content"
+                    hidden
+                    >
+                    Question 3 content
+                </div>
+            </div>
+        </div>
+        </section>       
+        <script src="js/accordian.js" async defer></script>
+    </body>
+</html>
