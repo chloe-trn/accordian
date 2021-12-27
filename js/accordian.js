@@ -1,59 +1,41 @@
-let openBtn = document.querySelector('#open-modal')
-let closeBtn = document.querySelector('#close-modal')
-let submitBtn = document.querySelector('#submit-modal')
-let overlay = document.querySelector('.overlay')
-let modal = document.querySelector('.modal')
-let lastFocusedElement
+let widgets = document.querySelectorAll('.accordian-widget')
 
-openBtn.addEventListener("click", openModal)
-closeBtn.addEventListener("click", closeModal)
-submitBtn.addEventListener("click", closeModal)
+Array.prototype.slice.call(widgets).forEach(function (widget) {
 
-function openModal(){
-    // store the last active focused element globally 
-    lastFocusedElement = document.activeElement;
+    let widgetTypeOpenMany = widget.hasAttribute('data-open-many')
+    let widgetTypeOpenOne = widget.hasAttribute('data-open-one')
+    let openBtns = document.querySelectorAll('.accordian-button')
+    let contentAreas = document.querySelectorAll('.accordian-content')
 
-    // add appropiate class and attribute for a visible element 
-    overlay.classList.add('active')
-    overlay.setAttribute("aria-hidden", "false")
+    widget.addEventListener('click', function (e) { 
+        e.preventDefault()
+        let clickedTarget = e.target
+        let isTargetOpen = clickedTarget.getAttribute('aria-expanded') === 'true'
 
-    // Find all focusable children, save references to the first and last focusable elements 
-    let focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]'
-    let focusableElementsList = modal.querySelectorAll(focusableElementsString)
-    focusableElementsList = Array.prototype.slice.call(focusableElementsList)
-    let firstFocusableElement = focusableElementsList[0]
-    let lastFocusableElement = focusableElementsList[focusableElementsList.length - 1]
-    
-    // set focus to first focusable element in modal 
-    firstFocusableElement.focus()
-
-    // keyboard trap the user
-    modal.addEventListener('keydown', function(e){
-        if (e.keyCode === 9) { // tab key pressed 
-
-            if (e.shiftKey) {  // backward keyboard navigation
-                if (document.activeElement === firstFocusableElement){
-                    e.preventDefault()
-                    lastFocusableElement.focus()
-                }
-            }else{ // forward keyboard navigation
-                if (document.activeElement === lastFocusableElement){
-                    e.preventDefault()
-                    firstFocusableElement.focus()
-                }
-            }
+        // data-many-open behavior paths:  
+        if(widgetTypeOpenMany && !isTargetOpen){
+            clickedTarget.setAttribute('aria-expanded', 'true');
+            let clickedTargetContent = document.getElementById(clickedTarget.getAttribute('aria-controls'))
+            clickedTargetContent.removeAttribute('hidden')
         }
-        if (e.keyCode === 27) { // escape key pressed
-            closeModal()
+        else if(widgetTypeOpenMany && isTargetOpen){
+            clickedTarget.setAttribute('aria-expanded', 'false');
+            let clickedTargetContent = document.getElementById(clickedTarget.getAttribute('aria-controls'))
+            clickedTargetContent.setAttribute('hidden', '')
         }
+
+        // data-one-open behavior paths: 
+        if(widgetTypeOpenOne && !isTargetOpen){
+          
+            // close previous openedTarget 
+
+            // open the current one 
+
+        }else if(widgetTypeOpenOne && isTargetOpen){
+
+        }
+
+        
     })
-}
-
-function closeModal(){
-    // remove appropiate class and attribute for a non-visible element 
-    overlay.classList.remove('active')
-    overlay.setAttribute("aria-hidden", "true") 
-
-    // restore focus to the previously focused element before the modal was opened
-    lastFocusedElement.focus()
-}
+    
+})
