@@ -4,13 +4,13 @@ Array.prototype.slice.call(widgets).forEach(function (widget) {
 
     let widgetTypeOpenMany = widget.hasAttribute('data-open-many')
     let widgetTypeOpenOne = widget.hasAttribute('data-open-one')
-    let openBtns = document.querySelectorAll('.accordian-button')
-    let contentAreas = document.querySelectorAll('.accordian-content')
 
     widget.addEventListener('click', function (e) { 
         e.preventDefault()
         let clickedTarget = e.target
         let isTargetOpen = clickedTarget.getAttribute('aria-expanded') === 'true'
+
+        console.log(clickedTarget.getAttribute('aria-expanded'))
 
         // data-many-open behavior paths:  
         if(widgetTypeOpenMany && !isTargetOpen){
